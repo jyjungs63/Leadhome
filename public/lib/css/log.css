@@ -1,0 +1,142 @@
+@import url('../styles/palette.css');
+
+#wrap {
+  width: 40%;
+  height: 88%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-area {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-area > button {
+  background: transparent;
+  width: 50%;
+  height: 35px;
+  font-weight: var(--weight-semi-bold);
+  font-size: 14px;
+}
+
+.btn-area > .btn-masterFile {
+  border: 1px solid var(--color-light-gray);
+  color: var(--color-gray);
+}
+
+.btn-log {
+  color: var(--color-mint);
+  border: 1px solid var(--color-mint);
+}
+
+.btn-area > button:hover {
+  border: 1px solid var(--color-mint);
+  color: var(--color-mint);
+  font-weight: var(--weight-semi-bold);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2%;
+  border: 1px solid var(--color-light-gray);
+  color: var(--color-gray);
+  font-weight: var(--weight-regular) !important;
+}
+
+caption {
+  text-align: left;
+  font-size: 17px;
+  font-weight: bold;
+  padding-bottom: 6px;
+}
+
+thead {
+  display: table;
+  width: 100%;
+}
+
+tbody { 
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 165px;
+  float: left;
+  width: 100%;
+}
+
+.th-1 {
+  width: 14%;
+}
+
+.th-time {
+  width: 25%;
+}
+
+table > thead > tr > td {
+  border-bottom: 2px solid var(--color-gray);
+}
+
+table > thead > tr > td,
+table > tbody > tr > td {
+  border-right:none;
+  border-left:none; 
+  padding: 8px 10px;
+}
+
+table tbody tr td:first-child { 
+  width: 107.09px;
+}
+
+table > tbody > tr > td:nth-child(n+2):nth-child(-n+3) { 
+  width: 191.25px;
+}
+
+table tbody tr > td:last-child { 
+  width: 258px;
+}
+
+/* log */
+.menu {
+  width: 100%;
+  padding: 5px;
+  margin-top: 1%;
+  color: var(--color-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category {
+  width: 80%;
+}
+
+.category span {
+  font-weight: var(--weight-semi-bold);
+}
+
+.category span:active, 
+.category span:hover {
+  cursor: pointer;
+  color: var(--color-mint);
+  font-weight: var(--weight-semi-bold);
+}
+
+.bar {
+  padding: 0 5px;
+}
+
+.select-user > select {
+  height: 30px;
+  width: 105px;
+}

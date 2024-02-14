@@ -1,0 +1,75 @@
+@import url('../styles/palette.css');
+
+body {
+  min-height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  color: black;
+  font-weight: 500;
+  height: 35px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px;
+}
+
+.header>div {
+  margin: 0;
+  padding-right: 5px;
+}
+
+.header img {
+  width: 20px;
+}
+
+.header img:hover {
+  cursor: pointer;
+}
+
+.logout {
+  margin-right: 5px;
+}
+
+/*button image*/
+/*hover*/
+.show-image:hover {
+  border: 2px solid var(--color-navy);
+  background: var(--color-light-blue);
+  cursor: pointer;
+}
+
+/* ************************************* */
+
+.logo {
+  margin-top: 5%;
+}
+
+.logo>img {
+  width: 400px;
+}
+
+.container {
+  width: 100%;
+}
+
+.btn_container {
+  display: flex;
+  margin: 6% 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn_container>button {
+  margin: 0 1.5%;
+  width: 180px;
+  height: 180px;
+  border: 1px solid #CACACA;
+  background: white;
+  border-radius: 20px;
+  opacity: 1;
+}

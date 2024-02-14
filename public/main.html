@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lead Platform </title>
+
+	<!-- JQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+
+	<script type="text/javascript" src="https://cdn.webix.com/edge/webix.min.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+	<script type="text/javascript" src="./common/common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="./lib/css/index.css">
+</head>
+
+<body>
+	<div class="header"></div>
+
+	<div class="container">
+		<div title="Leads Ship Main Page" class="logo" style="margin-top: 200px;">
+			<a href="http://localhost:8000"><img src="../lib/images/leadship.png"></a>
+		</div>
+
+		<!--이미지 버튼-->
+		<div id="btnDiv" class="btn_container">
+			<button id="info" type="button" class="show-image" title="Leads Infomation">
+				<img src="../lib/images/info.png">
+			</button>
+			<button id="project" type="button" class="show-image" title="Leads Project">
+				<img src="../lib/images/project.png">
+			</button>
+			<button id="initial" type="button" class="show-image" title="Leads Initial Project">
+				<img src="./lib/images/initial.png">
+			</button>
+			<button id="spec" type="button" disabled='disabled' class="show-image" title="Leads GA Spec">
+				<img src="./lib/images/spec.png">
+			</button>
+			<button id="analysis" type="button" disabled='disabled' class="show-image" title="Lead Aanlysis">
+				<img src="./lib/images/analysis.png">
+			</button>
+		</div>
+
+	</div>
+	<div class="footer"></div>
+
+	<script>
+		var uid, rst;
+		// const searchParams = new URLSearchParams(location.search)
+		// for (const param of searchParams) {
+		// 	uid = param[1]
+		// }
+		var rdata = JSON.parse(localStorage.getItem("login_data"));
+		uid = rdata.id
+		company = rdata.company
+
+		ctlDivEnale(false) // disable all portal buttons
+
+		stat = loginCheck(uid);
+
+		ctlDivEnale(stat);
+
+		$(':button').click(function () {
+			var id = $(this).attr('id');
+
+			switch (id) {
+				case 'info':
+					location.href = 'http://localhost:9001?company=' + company
+					break;
+				case 'project':
+					location.href = 'http://localhost:9011?company=' + company
+					break;
+				case 'initial':
+					location.href = '../main/index.html'
+					break;
+				case 'spec':
+					location.href = '../main/index.html'
+					break;
+				case 'analysis':
+					location.href = '../main/index.html'
+					break;
+			}
+		})
+
+
+		function ctlDivEnale(bool) {
+			if (bool == true) {
+				$("#btnDiv").children().prop('disabled', false);
+				$("#btnDiv").children().css('opacity', 1)
+				$("#btnDiv").children().css('cursor', 'default')
+			}
+			else {
+				$("#btnDiv").children().prop('disabled', true);
+				$("#btnDiv").children().css('opacity', 0.1)
+				$("#btnDiv").children().css('cursor', 'not-allowed')
+			}
+		}
+
+		function loginCheck(uid) {
+			var result;
+			var data = { id: uid, company : company }
+			$.ajax({
+				url: "/" + "loginCheck",
+				method: "POST",
+				data: JSON.stringify(data),
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				timeout: 50000,
+				cache: false,
+				async: false,
+				success: function (response) {
+					rst = response;
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					if (textStatus == "error") {
+						return "error has occurred: " + jqXHR.status + " " + jqXHR.statusText
+					}
+				},
+				complete: function (xhr, status) {
+					if (JSON.parse(rst)['result'] == "success") {
+						result = true;
+					}
+					else
+						result = false;
+				}
+			});
+			return result;
+		}
+
+	</script>
+</body>
+
+</html>
